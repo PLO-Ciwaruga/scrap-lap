@@ -8,14 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     
         <!-- <link rel="manifest" href="site.webmanifest"> -->
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
         <!-- Place favicon.ico in the root directory -->
     
         <!-- CSS here -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
         <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/css/themify-icons.css">
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/flaticon.css">
@@ -121,7 +119,22 @@
     </div>
     <!-- slider_area_end -->
 
-    A
+    <section>
+        <div class="container-fluid">
+            <div class="row" id="product-place">
+                <div class="col-md-3">
+                    <img src="https://m.media-amazon.com/images/I/81H9y1pPW6L._AC_UY218_ML3_.jpg">
+                </div>
+                <div class="col-md-3">
+                    <span>Acer Spin 3 Convertible Laptop</span><br/>
+                    <span>$709.99</span><br/>
+                    <span>Rating: 4,4</span><br/>
+                    <span>Brand: Asus</span><br/>
+                    <span>Model:SP314-53N-77AJ</spab><br/>
+                </div>
+            </div>
+        </div>
+    </section>
 
      <!-- footer start -->
      <footer class="footer">
@@ -329,6 +342,38 @@ $('.ui-slider-handle:eq(0)').append('<span class="price-range-min value">' + $('
 $('.ui-slider-handle:eq(1)').append('<span class="price-range-max value">' + $('#slider').slider('values', 1) +
     'k</span>');
 </script>
+<script src="jquery-2.1.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.getJSON("amazon.json", function (data) {
+            var datanya = '';
+            $.each(data, function (key, value) {
+                datanya += '<div class="col-md-3">';
+                datanya += '<img src = "' + value.img-url + '">';
+                datanya += '</div>';
+                datanya += '<div class="col-md-3">';
+                datanya += '<span>' + value.name + '</span>';
+                datanya += '<span>' + value.price + '</span>';
+                datanya += '<span>' + value.rating + '</span>';
+                datanya += '<span>' + value.spec['brand'] + '</span>';
+                datanya += '<span>' + value.spec['model'] + '</span>';
+            });
+            $('#product-place').append(datanya);
+        });
+    });
+</script>
     </body>
+    <!--
+    <div class="col-md-3">
+        <img src="https://m.media-amazon.com/images/I/81H9y1pPW6L._AC_UY218_ML3_.jpg">
+    </div>
+    <div class="col-md-3">
+        <span>Acer Spin 3 Convertible Laptop</span><br />
+        <span>$709.99</span><br />
+        <span>Rating: 4,4</span><br />
+        <span>Brand: Asus</span><br />
+        <span>Model:SP314-53N-77AJ</spab><br />
+    </div>
+    -->
 
 </html>
