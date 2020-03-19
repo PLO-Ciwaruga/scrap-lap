@@ -1,0 +1,18 @@
+.card {
+    box-shadow: 5px 5px 5px #888;
+    padding: 30px;
+}
+
+.mt-10 {
+    margin-top: 20px;
+}
+
+.one {
+    display: inline;
+}
+
+#price {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
